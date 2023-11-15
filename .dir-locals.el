@@ -1,0 +1,6 @@
+((nil . ((projectile-project-compilation-cmd . "cmake -S . -B build;cmake --build build")
+	 (compile-command . "cmake -S . -B build;cmake --build build")
+         (projectile-project-run-cmd . "./build/X13 --enable-x11 --platform-display-libs=mir:x11 --platform-rendering-libs=mir:egl-generic --debug")
+	 )
+      )
+ )

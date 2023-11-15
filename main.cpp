@@ -42,7 +42,7 @@ int main(int argc, char const* argv[])
                 return true;
 
             case KEY_T:
-                external_client_launcher.launch({"konsole"});
+                external_client_launcher.launch({std::string("konsole")});
                 return true;
 
             default:
