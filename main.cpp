@@ -50,6 +50,7 @@ int main(int argc, char const* argv[])
 			 return false;
     }
   };
+  
   return runner.run_with(
   {
 	X11Support{},
