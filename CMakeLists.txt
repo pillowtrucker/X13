@@ -3,11 +3,13 @@ project(X13)
 
 include_directories(mir/include/miral)
 
+
 #include_directories(/usr/include/mirplatform) # that's the path in public headers
-include_directories(mir/include/mir/platform)
+include_directories(mir/include/platform)
 
 #include_directories(/usr/include/mircore) # that's the path in public headers
 include_directories(mir/include/core)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

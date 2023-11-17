@@ -1,3 +1,4 @@
+#include <miral/configuration_option.h>
 #include <iostream>
 #include <miral/runner.h>
 #include <miral/minimal_window_manager.h>
@@ -9,7 +10,8 @@
 #include <miral/append_event_filter.h>
 #include <xkbcommon/xkbcommon-keysyms.h>
 #include <miral/external_client.h>
-
+#include <mir/graphics/display_configuration.h>
+#include <miral/display_configuration.h>
 using namespace miral;
 using namespace miral::toolkit;
 
@@ -19,6 +21,14 @@ int main(int argc, char const* argv[])
   ExternalClientLauncher external_client_launcher;
   Keymap config_keymap;
   config_keymap.set_keymap("gb");
+  
+  //  static constexpr mir::graphics::DisplayConfigurationMode test_display_mode{{1920,1080},300};
+  //  mir::graphics::DisplayConfigurationOutput vs;
+  // vs.preferred_mode_index = 0;
+  // vs.current_mode_index = 0;
+  // vs.modes.push_back(test_display_mode);
+  //  miral::DisplayConfiguration;
+
   auto const keyboard_shortcuts = [&](MirEvent const* event)
   {
 	if (mir_event_get_type(event) != mir_event_type_input)
@@ -50,9 +60,12 @@ int main(int argc, char const* argv[])
 			 return false;
     }
   };
-  
+  DisplayConfiguration display_config{runner};
+
   return runner.run_with(
   {
+    display_config,
+    display_config.layout_option(),
 	X11Support{},
 	config_keymap,
 	external_client_launcher,
