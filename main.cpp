@@ -1,3 +1,5 @@
+#include <miral/wayland_extensions.h>
+#include <mir/logging/logger.h>
 #include <miral/configuration_option.h>
 #include <iostream>
 #include <miral/runner.h>
@@ -10,8 +12,10 @@
 #include <miral/append_event_filter.h>
 #include <xkbcommon/xkbcommon-keysyms.h>
 #include <miral/external_client.h>
-#include <mir/graphics/display_configuration.h>
+// #include <mir/graphics/display_configuration.h>
 #include <miral/display_configuration.h>
+#include <miral/display_configuration_option.h>
+#include <miral/command_line_option.h>
 using namespace miral;
 using namespace miral::toolkit;
 
@@ -60,12 +64,15 @@ int main(int argc, char const* argv[])
 			 return false;
     }
   };
-  DisplayConfiguration display_config{runner};
-
+  // DisplayConfiguration display_config{runner};
+  mir::logging::log(mir::logging::Severity::informational, "test logging", "X13");
+  
   return runner.run_with(
   {
-    display_config,
-    display_config.layout_option(),
+      //    display_config,
+      //display_config.layout_option(),
+      WaylandExtensions{},
+      display_configuration_options,
 	X11Support{},
 	config_keymap,
 	external_client_launcher,
